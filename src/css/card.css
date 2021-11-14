@@ -1,0 +1,126 @@
+h5{
+    margin: 0;
+}
+
+p{
+    margin: 0;
+}
+
+.magic{
+    animation-duration: 0.8s;
+    animation-name: Bounces;
+    animation-fill-mode: forwards
+}
+.pokeballshow{
+    animation-duration: 0.5s;
+    animation-name: BouncesPokeball;
+    animation-fill-mode: forwards
+}
+.pokeball{
+    position: relative;
+    top: -70px;
+    width: 60px;
+    height: 60px;
+    opacity: 0;
+}
+button{
+    cursor: pointer;
+}
+p{
+    font-size: 12px;
+}
+.containerHp{
+    width: 90%;
+    height: 11px;
+    margin: 5px auto;
+    position: relative;
+    border-radius: 5px;
+    border: 1px solid #dbdbdb;
+    background: #475355;;
+}
+
+div.card{
+    box-sizing: content-box;
+    height: 180px;
+    width: 300px;
+    background-color: white;
+    border:1.9px solid #bdbdbd9b;
+    border-radius: 10px;
+    margin:20px;
+    grid-row: 1;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.2)
+}
+
+ .HP{
+    width: 100%;
+    background: #15e765;
+    border: 1px solid #15e765;
+    height: 9px;
+    position: relative;
+    border-radius: 5px;
+    transition: 0.4s ease;
+}
+.main{
+    width: 100%;
+    height: 80%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+}
+.info{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.subinfo{
+    flex:0.3;
+    padding-top: 15px;
+    text-transform: capitalize;
+    border-right: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+}
+.subinfo2{
+    flex:1;
+    padding: 8px;
+    border-right: 1px solid #dbdbdb;
+    text-transform: capitalize;
+    
+}
+.image{
+    padding-top: 15px;
+    width: 40%;
+    /* position: relative; */
+}
+.pokemon{
+    height: 100px;
+    object-fit: contain;
+}
+.options{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: #f8f8f8;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.division{
+    flex: 0.7;
+    background: #f8f8f8;
+    border: none;
+    border-bottom-left-radius: 10px;
+    padding-right: 30%;
+    background: rgba(238, 75, 75, 0.89);
+    color:white;
+}
+.division2{
+    flex: 0.7;
+    background: #f8f8f8;
+    border: none;
+    background: rgba(36, 35, 35, 0.835);
+    color: white;
+    border-bottom-right-radius: 10px;
+    padding-left: 28%;
+}
