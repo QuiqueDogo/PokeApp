@@ -12,11 +12,12 @@ function Pokemon() {
 const [pokemon, getData] = useState({
   results: []
 })
+const [info, getInfo] =useState('pokemon')
 useEffect(() => {
     
     const fetchData = async () => {
       try {
-        const response = await API.get(`pokemon/`);
+        const response = await API.get(info);
         console.log(response);
         getData(response.data);
       } catch (error) {
@@ -25,7 +26,7 @@ useEffect(() => {
     };
 
     fetchData();
-  },[])
+  },[info])
   
     return (
         <div className={styles.grid_pokemon}>

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef} from 'react';
 import '../css/card.css';
 import axios from 'axios';
 import imgPokeball  from '../img/poke.png'
+import background  from '../img/background.png'
 
 function Card(props) {
 
@@ -64,24 +65,24 @@ function Card(props) {
     return ( 
         <div  className='card'>
         <div className='main'>
-          <div className='info'>
-              <div className='subinfo'>
-                <p>{props.name}</p>
-              <div className='containerHp'>
-                {/* <HP hp={regla(hpokemon)}></HP> */}
-                  <div ref={widthLabel} className='HP'></div>
-              </div>
-              </div>
-              <div className='subinfo2'>
-              <h5 >Stats</h5>
-              <p>PH: {`${hpokemon}/${infoPokemon.stats[0].base_stat}`}</p>
-              </div>
-          </div>
+          <div className='background'></div>
             <div className='image'>
                 <img className='pokemon' src={infoPokemon.sprites.front_default} alt="" />
                 <img className='pokeball' src={imgPokeball} alt="" />
             </div>
         </div>
+        <div className='info'>
+              <div className='subinfo'>
+                <p>{props.name}</p>
+              <div className='containerHp'>
+                  <div ref={widthLabel} className='HP'></div>
+              </div>
+              </div>
+              <div className='subinfo2'>
+              <h5 >Stats</h5>
+              <p>PH: {`${hpokemon} / ${infoPokemon.stats[0].base_stat}`}</p>
+              </div>
+          </div>
         <div className='options'>
             <button disabled="disableAttack" 
             // onClick="Capture"
