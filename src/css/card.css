@@ -35,7 +35,7 @@ p{
     margin: 5px auto;
     position: relative;
     border-radius: 5px;
-    border: 1px solid #dbdbdb;
+    border: 1px solid #474646;;
     background: #475355;;
 }
 
@@ -51,14 +51,15 @@ p{
 div.card{
     box-sizing: content-box;
     height: 350px;
-    width: 270px;
+    width: 250px;
     background-color: white;
     border:1.9px solid #bdbdbd9b;
     border-radius: 10px;
-    margin:20px;
-    grid-row: 1;
+    
     box-shadow: 0 1px 8px rgba(0,0,0,0.2);
     overflow: hidden;
+    
+    justify-self: center;
 }
 
  .HP{
@@ -72,46 +73,64 @@ div.card{
 }
 .HP:before{
     content: "PS";
-    position:absolute;
-    left:-10px;
-    font-size: 0.70rem;
-    background:black;
+    position: absolute;
+    left: -14px;
+    bottom: -2px;
+    font-size: 0.68rem;
+    background: black;
     color: yellow;
-
-
 }
 .main{
     width: 100%;
-    height: 60%;
+    height: 30%;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
+    background: rgba(196, 68, 68, 0.89);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
 .info{
     width: 80%;
-    display: flex;
-    flex-direction: column;
+    height: 57%;
+    /* display: flex; */
     margin: auto;
+    padding-top:50px;
+    /* flex-direction: column;
+    align-items: center;
+    justify-content: center; */
 }
 .subinfo{
     flex:0.3;
     padding-top: 15px;
     text-transform: capitalize;
-    border-right: 1px solid #dbdbdb;
-    border-bottom: 1px solid #dbdbdb;
+    z-index: 1;
+    
 }
 .subinfo2{
     flex:1;
     padding: 8px;
-    border-right: 1px solid #dbdbdb;
     text-transform: capitalize;
-    
+}
+
+.background-circle{
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgb(85, 85, 85);
+    border-radius: 50%;
+    margin: 10px auto 0 auto;
+    background-color: white;
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 1;
 }
 .image{
     width: 40%;
     position: absolute;
     top: 12%;
-    left: 30%;
+    left: 18%;
+    
 }
 .pokemon{
     
@@ -120,7 +139,7 @@ div.card{
 }
 .options{
     width: 100%;
-    height: 20%;
+    height: 13%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;

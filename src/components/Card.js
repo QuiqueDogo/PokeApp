@@ -2,7 +2,7 @@ import { useState, useEffect, useRef} from 'react';
 import '../css/card.css';
 import axios from 'axios';
 import imgPokeball  from '../img/poke.png'
-import background  from '../img/background.png'
+
 
 function Card(props) {
 
@@ -10,7 +10,6 @@ function Card(props) {
   const [infoPokemon, dataPokemon] = useState({
     sprites: {
       front_default: '',
-      // hp:[{base_stat:1}]
     },
     stats:[{base_stat:1}],
   });
@@ -65,11 +64,12 @@ function Card(props) {
     return ( 
         <div  className='card'>
         <div className='main'>
-          <div className='background'></div>
+          <div className='background-circle'>
             <div className='image'>
                 <img className='pokemon' src={infoPokemon.sprites.front_default} alt="" />
                 <img className='pokeball' src={imgPokeball} alt="" />
             </div>
+          </div>
         </div>
         <div className='info'>
               <div className='subinfo'>
@@ -79,7 +79,6 @@ function Card(props) {
               </div>
               </div>
               <div className='subinfo2'>
-              <h5 >Stats</h5>
               <p>PH: {`${hpokemon} / ${infoPokemon.stats[0].base_stat}`}</p>
               </div>
           </div>

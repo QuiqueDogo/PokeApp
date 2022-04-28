@@ -1,15 +1,18 @@
 .current{
-    box-shadow: 0 3px 0 rgba(69, 70, 63, 0.828);
-    transition: 0.2s ease-in;
+    background-color:rgba(196, 68, 68, 0.89);
+    width: 100%;
+    border: 1px solid white;
+   
+    /* transition: 0.2s ease-in; */
 }
 a{  
     text-align: center;
     color:rgba(224, 218, 218, 0.87);
-    margin: 0 20px;
+    
     text-decoration: none;
     text-transform: capitalize;
     transition: 0.2s ease-in;
-    padding: 7px 0 0 0;
+
     height: 30px;
 }
 a:visited{
@@ -26,13 +29,14 @@ p{
     font-size: 14px;
 }
 .header{
-    padding:10px;
+    padding:9px;
     display: flex;
-    width:100%;
+    width:50px;
     height:50px;
-    background: #b14343;
-    position: sticky;
-    top: 0;
+    border: 2px solid #437cb1;
+    position: absolute;
+    top: 30px;
+    left: 10px;
     z-index: 5;
 }
 .logo{
@@ -41,13 +45,12 @@ p{
     object-fit: contain;
 }
 .containerLogo{
-    flex:1;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     margin-left: 30px;
 }
 .choose{
-    flex:1;
+    
     padding:5px 0;
     letter-spacing: 1px; 
     text-align: center;
@@ -55,17 +58,60 @@ p{
     color: white;
 }
 .menu{
-    flex:1;
-    padding-right: 37px;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
     font-weight: bolder;
+    padding-top: 20px;
 }
-
-/* .current  {
-      border-bottom: 2px solid black;
-} */
 
 li{
     list-style: none;
+}
+
+
+.navburger{
+    border: 1px;
+    cursor: pointer;
+}
+
+/* 230*/ 
+.sideNav{
+    display: flex;
+    flex-direction: column;
+    padding-top:15px;
+    width:0px;
+    background-color: #437cb1;
+    height:100vh;
+    position: absolute;
+    top: 0;
+    left: 0%;
+    z-index: 5;
+    transition: width 0.4s ease;
+    overflow: hidden;
+}
+
+.containerPok{
+    height: 100vh;
+    overflow-x: hidden;
+    background-image: url('../img/11.jpg');
+    background-repeat:repeat
+}
+
+.menu ul li{
+    height:50px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.menu ul li a{
+    height:100%;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.closesvg{
+    cursor:pointer; 
+    margin-right:10px;
 }
