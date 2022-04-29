@@ -5,6 +5,7 @@ import imgPokeball  from '../img/poke.png'
 import {PokemonContext} from '../pages/App';
 
 function Card(props) {
+  //aqui usamos el context para poder guardar los pokemons 
   const  {info,setinfo}  = useContext(PokemonContext);
 
   const [infoPokemon, dataPokemon] = useState({
@@ -15,6 +16,7 @@ function Card(props) {
   });
 
   const [hpokemon, triggerHP] = useState(1);
+  //los useRef para hacer trigger en las animaciones
   let widthLabel = useRef(null);
   let hiddenPok = useRef(null);
   let showPok = useRef(null);
@@ -35,11 +37,11 @@ function Card(props) {
       fetchData();
     },[])
 
-    // FUNCIONES 
+    // funcion para generar la barra de vida
     const regla = (data) =>{
       return ((data * 100)/infoPokemon.stats[0].base_stat);
     }
-
+    //color cambia el color de la barra de vida
     const color = (data) => {
       return(
       (((data * 100)/infoPokemon.stats[0].base_stat) <= 100 && 
@@ -47,11 +49,12 @@ function Card(props) {
       (((data * 100)/infoPokemon.stats[0].base_stat) <= 59 && ((data * 100)/infoPokemon.stats[0].base_stat) >= 30) ? "#f7de76" : "#f45639");
     }
     
+    //funcion para generar un daño aleatorio
     const calHP = (data) =>{
       return data -  Math.round(Math.random() * (15 - 1) + 1);
     }
  
-
+    //funcion para atacar
     const attack = () =>{
       let  subHP = calHP(hpokemon);
       if(subHP < 10){
@@ -63,7 +66,7 @@ function Card(props) {
         widthLabel.current.style.border = `1px solid ${color(subHP)}`;
       }
     }
-
+    // aqui se toma en cuenta la vida que tiene y en ella se  activan las animaciones y se guarda con el useContext de App
     const Capture = () => {
       let  subHP = calHP(hpokemon);
       console.log(info)

@@ -7,6 +7,7 @@ import React, {
   useMemo
 } from 'react';
 
+//creamos el context y usememo para poder guardar los pokemon que capturemos y usarlos global
 export const PokemonContext = createContext({
   info: '',
   setinfo: () => {},

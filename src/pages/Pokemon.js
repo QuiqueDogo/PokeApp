@@ -6,53 +6,61 @@ import CustomAlert from '../components/CustomAlert';
 
 
 function Pokemon() {
-		const [pokemon, getData] = useState([])
+		const [pokemon, getData] = useState([]);
     const [filterpokemon, filtergetData] = useState([]);
     const [show, setShow] = useState(false);
-    const [textRender, settextRender] = useState('')
-    const [variant, setvariant] = useState('')
-    const [loading, setloading] = useState(true)
-		const filterPokemon = (data) => {
+    const [textRender, settextRender] = useState('');
+    const [variant, setvariant] = useState('');
+    const [loading, setloading] = useState(true);
+    const [btnrefresh, setbtnrefresh] = useState(0);
+		
+    //funcion para filtrar por nombre 
+    const filterPokemon = (data) => {
       let name = data.target.value
       let filterPok = pokemon.filter(info => info.name.toLowerCase().includes(name.toLowerCase()))
       filtergetData(filterPok)
 		}
-    let value3 = Math.floor(Math.random() * 300)
 
-		const [info] =useState(`https://pokeapi.co/api/v2/pokemon?offset=${value3}&limit=300`);
+    //funcion para llamar las alertas
     const setAlert = (showTo, text, type) =>  {
-        console.log(show, text)
         settextRender(text)
         setShow(showTo)
         setvariant(type)
     }
 
-		useEffect(() => {
-				
-				const fetchData = async () => {
-					try {
-						const response = await axios.get(info);
-						console.log(response);
-						if(response.status === 200){
-							getData(response.data.results);
-              filtergetData(response.data.results);
-							setloading(false)
-						}
-					} catch (error) {
-						console.log("error", error);
-					}
-				};
+   
 
+		useEffect(() => {
+      setloading(true)
+      //value3 para generar lista aleatoria
+      let value3 = Math.floor(Math.random() * 300)
+      const info =`https://pokeapi.co/api/v2/pokemon?offset=${value3}&limit=50`;
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(info);
+          if(response.status === 200){
+            getData(response.data.results);
+            filtergetData(response.data.results);
+            setloading(false)
+          }
+        } catch (error) {
+          console.log("error", error);
+        }
+      };
+				
 				fetchData();
-			},[])
+			},[btnrefresh])
+
 				return (
           <section className={styles.content}>
           <input className={styles.inputSearch} placeholder='Busca tu pokemon' type="text" onChange={ filterPokemon}/>
+          <button onClick={() => setbtnrefresh(btnrefresh + 1+'asd') } className={styles.button} >Actualizar Lista</button>
 					<div className={styles.container_pok}>	
 						{loading &&
 							svgLoading
 						}
-								{filterpokemon.map(result => {
+								{!loading &&
+                filterpokemon.map(result => {
 									return(
 										<Card key={result.name}
 											name={result.name}

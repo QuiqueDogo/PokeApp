@@ -1,4 +1,4 @@
-import React,{useState, useEffect, useContext,useRef} from 'react'; 
+import React,{useState, useContext} from 'react'; 
 import styles from '../css/ListPokemon.module.css';
 import {PokemonContext} from '../pages/App';
 
@@ -8,7 +8,7 @@ function ListPokemon() {
     const  [description, setdescription] = useState([]);
     const  [moreData, setmoreData] = useState();
 
-    //Funciones
+    //Funcion para obtener el tipo de pokemos que es 
 
     function typePokemon(type){
         switch(type){
@@ -53,8 +53,8 @@ function ListPokemon() {
         }
       }
 
+    //obtenemos la ingo personaml del pokemon
     const viewPersonal = (val) =>{
-        console.log(val)
         setdata(val)
         fetch(`https://pokeapi.co/api/v2/pokemon-species/${val.id}`)
         .then((response) => response.json())
@@ -62,15 +62,8 @@ function ListPokemon() {
             const text = data.flavor_text_entries.find( elem => elem.language.name === 'es');
             setdescription(text.flavor_text)
             setmoreData(data)
-            console.log(data.base_happiness, text.flavor_text)
         })
     }
-
-    useEffect(()=>{
-        // setinfo(['asioi'])
-        // setinfo(['algo'])
-        console.log(info)
-    },[])
     return (
         <div className={styles.contentPokemon}>
         <div className={styles.allimg}>

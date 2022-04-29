@@ -12,7 +12,9 @@ import styles from '../css/NavbarCss.module.css';
 
 
 function Navbar(prop) {
+  //usamos el ref para activar las animaciones
   let widthNav = useRef(null)
+  //funciones para abrir y cerrar el menu
   const openNav = () => {
       widthNav.current.style.left = '0%'
   }
