@@ -2,19 +2,30 @@ import { useState, useEffect} from 'react';
 import Card from '../components/Card';
 import axios from 'axios';
 import styles from '../css/Pokemoncss.module.css';
+import CustomAlert from '../components/CustomAlert';
 
 
 function Pokemon() {
-		const [pokemon, getData] = useState({
-			results: []
-		})
-		const handlePag = (event, value) => {
-			console.log(event, value)
+		const [pokemon, getData] = useState([])
+    const [filterpokemon, filtergetData] = useState([]);
+    const [show, setShow] = useState(false);
+    const [textRender, settextRender] = useState('')
+    const [variant, setvariant] = useState('')
+    const [loading, setloading] = useState(true)
+		const filterPokemon = (data) => {
+      let name = data.target.value
+      let filterPok = pokemon.filter(info => info.name.toLowerCase().includes(name.toLowerCase()))
+      filtergetData(filterPok)
 		}
-		const [loading, setloading] = useState(true)
-		let value3 = Math.floor(Math.random() * 1000)
-		const [info, getInfo] =useState(`https://pokeapi.co/api/v2/pokemon?offset=${value3}&limit=8`);
-		const active = '3';
+    let value3 = Math.floor(Math.random() * 300)
+
+		const [info] =useState(`https://pokeapi.co/api/v2/pokemon?offset=${value3}&limit=300`);
+    const setAlert = (showTo, text, type) =>  {
+        console.log(show, text)
+        settextRender(text)
+        setShow(showTo)
+        setvariant(type)
+    }
 
 		useEffect(() => {
 				
@@ -23,7 +34,8 @@ function Pokemon() {
 						const response = await axios.get(info);
 						console.log(response);
 						if(response.status === 200){
-							getData(response.data);
+							getData(response.data.results);
+              filtergetData(response.data.results);
 							setloading(false)
 						}
 					} catch (error) {
@@ -34,22 +46,31 @@ function Pokemon() {
 				fetchData();
 			},[])
 				return (
-				
+          <section className={styles.content}>
+          <input className={styles.inputSearch} placeholder='Busca tu pokemon' type="text" onChange={ filterPokemon}/>
 					<div className={styles.container_pok}>	
 						{loading &&
 							svgLoading
 						}
-								{pokemon.results.map(result => {
+								{filterpokemon.map(result => {
 									return(
 										<Card key={result.name}
 											name={result.name}
 											url={result.url}
+                      setAlert={setAlert}
 											/>
 											
 											)
 										})}
 					
 					</div>	
+          <CustomAlert 
+            textToRender={textRender}
+            variant={variant}
+            showProp={show}
+            setShow={setShow} 
+            time='1500'/>
+          </section>
 			
 				)
 		}

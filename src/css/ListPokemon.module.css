@@ -1,0 +1,152 @@
+
+.contentPokemon{
+    margin-top:50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pokedex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.all{
+    background-color: #c60b2b;
+    border-radius: 7px;
+    border: 2px solid #000000;
+    box-shadow: 2px 2px #89061c;
+    width: 500px;
+    height: 850px;
+    display: flex;
+    flex-direction: column;
+}
+
+.all_circles{
+    height:150px;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.circle{
+    width: 100px;
+    height: 100px;
+    background-color: #146b9f;
+    border-radius: 50%;
+    border: 6px solid white;
+    margin: 0 10px;
+  }
+
+.circle2{
+    width: 30px;
+    height: 30px;
+    background-color: #149f22;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+.circle3{
+    width: 30px;
+    height: 30px;
+    background-color: #7c149f;
+    border-radius: 50%;
+    border: 3px solid white;
+    margin: 0 10px;
+}
+
+
+.circle4{
+    width: 30px;
+    height: 30px;
+    background-color: #d88a16;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+
+.screen{
+    height:700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscreen{
+    height:250px;
+    width:400px;
+    border-radius: 15px;
+    border: 1px solid black;
+    background-color: #dedede;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blackscreen{
+    width:85%;
+    height:85%;
+    background-color: black;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.allimg{
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.contentimg{
+    height:70px;
+    width:70px;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color:  rgb(187, 203, 209);
+    margin: 5px;
+    cursor: pointer;
+}
+
+.contentimg img{
+    height: 70px;
+}
+
+.blackscreen img{
+    height: 110px;
+    width: 110px;
+
+}
+
+.screenInfo{
+    height:350px;
+    width:400px;
+    margin-top: 20px;
+    border-radius: 15px;
+    border: 1px solid black;
+    background-color: #dedede;  
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px;
+}
+
+.info p {
+    margin:3px ;
+    text-align: justify;
+}
+
+.types{
+    margin: 5px;
+    width: 60px;
+}

@@ -38,6 +38,7 @@ p{
     top: 30px;
     left: 10px;
     z-index: 5;
+    cursor: pointer;
 }
 .logo{
     min-width: 120px;
@@ -79,14 +80,14 @@ li{
     display: flex;
     flex-direction: column;
     padding-top:15px;
-    width:0px;
+    width:230px;
     background-color: #437cb1;
     height:100vh;
     position: absolute;
     top: 0;
-    left: 0%;
+    left: -60%;
     z-index: 5;
-    transition: width 0.4s ease;
+    transition: left 0.4s ease;
     overflow: hidden;
 }
 
@@ -94,7 +95,13 @@ li{
     height: 100vh;
     overflow-x: hidden;
     background-image: url('../img/11.jpg');
-    background-repeat:repeat
+    background-repeat:repeat;
+    background-size: cover;
+}
+
+.menu ul {
+    margin: 0!important;
+    padding: 0!important;
 }
 
 .menu ul li{
@@ -114,4 +121,11 @@ li{
 .closesvg{
     cursor:pointer; 
     margin-right:10px;
+}
+
+.mobile_alert{
+    position:absolute;
+    z-index: 6;
+    top: 5%;
+    right: 10%;
 }

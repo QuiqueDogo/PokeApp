@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef} from 'react';
+import { useState, useEffect, useRef, useContext} from 'react';
 import '../css/card.css';
 import axios from 'axios';
 import imgPokeball  from '../img/poke.png'
-
+import {PokemonContext} from '../pages/App';
 
 function Card(props) {
-
+  const  {info,setinfo}  = useContext(PokemonContext);
 
   const [infoPokemon, dataPokemon] = useState({
     sprites: {
@@ -16,14 +16,15 @@ function Card(props) {
 
   const [hpokemon, triggerHP] = useState(1);
   let widthLabel = useRef(null);
+  let hiddenPok = useRef(null);
+  let showPok = useRef(null);
+  let btnAttack = useRef(null);
 
 
   useEffect(() => {
-      
       const fetchData = async () => {
         try {
           const response = await axios.get(`${props.url}`);
-          // console.log(response);
           dataPokemon(response.data);
           triggerHP(response.data.stats[0].base_stat)
         } catch (error) {
@@ -47,17 +48,41 @@ function Card(props) {
     }
     
     const calHP = (data) =>{
-      return data -  Math.round(Math.random() * (9 - 1) + 1);
+      return data -  Math.round(Math.random() * (15 - 1) + 1);
     }
  
 
     const attack = () =>{
-      // hpTriggerBefore(hpokemon)
-      let  subHP = calHP(hpokemon)
-      triggerHP(subHP)
-      widthLabel.current.style.width = `${regla(subHP)}%`;
-      widthLabel.current.style.background = `${color(subHP)}`
-      widthLabel.current.style.border = `1px solid ${color(subHP)}`;
+      let  subHP = calHP(hpokemon);
+      if(subHP < 10){
+        props.setAlert(true, `Cuidado, puedes matar a ${props.name}`,'danger' )
+      }else{
+        triggerHP(subHP)
+        widthLabel.current.style.width = `${regla(subHP)}%`;
+        widthLabel.current.style.background = `${color(subHP)}`
+        widthLabel.current.style.border = `1px solid ${color(subHP)}`;
+      }
+    }
+
+    const Capture = () => {
+      let  subHP = calHP(hpokemon);
+      console.log(info)
+      if(subHP < 26){
+        hiddenPok.current.style.animation = 'Bounces';
+        hiddenPok.current.style.animationDuration = "0.8s";
+        hiddenPok.current.style.animationFillMode = "forwards";
+        setTimeout(() => {
+          showPok.current.style.animation = 'BouncesPokeball';
+          showPok.current.style.animationDuration = "0.5s";
+          showPok.current.style.animationFillMode = "forwards";
+          props.setAlert(true, `${props.name} atrapado`, 'primary')
+          setinfo([...info,infoPokemon])
+          btnAttack.current.setAttribute('disabled','')
+        }, 800);
+      }else{
+        
+        props.setAlert(true, `Aun no le bajas mucha vida`, 'danger')
+      }
     }
  
 
@@ -66,8 +91,8 @@ function Card(props) {
         <div className='main'>
           <div className='background-circle'>
             <div className='image'>
-                <img className='pokemon' src={infoPokemon.sprites.front_default} alt="" />
-                <img className='pokeball' src={imgPokeball} alt="" />
+                <img ref={hiddenPok} className='pokemon' src={infoPokemon.sprites?.front_default ?? infoPokemon.sprites.other["official-artwork"].front_default} alt="" />
+                <img ref={showPok} className='pokeball' src={imgPokeball} alt="" />
             </div>
           </div>
         </div>
@@ -83,13 +108,14 @@ function Card(props) {
               </div>
           </div>
         <div className='options'>
-            <button disabled="disableAttack" 
-            // onClick="Capture"
+            <button
+            ref={btnAttack} 
+            onClick={Capture}
              className='division'>
                 Capturar
             </button>
             <button 
-            onClick={ attack} 
+            onClick={attack} 
             className='division2'>
                 Atacar
             </button>
